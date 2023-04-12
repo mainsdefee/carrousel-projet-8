@@ -35,3 +35,26 @@ flecheGauche.addEventListener("click", () => {
   console.log("Clic sur la flèche gauche"); // Afficher un message dans la console
   //
 });
+// Créer un conteneur pour les "bullets"
+const bulletContainer = document.createElement("div");
+bulletContainer.classList.add("dots");
+// Ajouter le conteneur des "bullets" au conteneur du carrousel
+conteneur.appendChild(bulletContainer);
+
+// Boucle à travers chaque slide pour créer un "bullet" correspondant et l'ajouter au conteneur
+slides.forEach((slide, index) => {
+  const bullet = document.createElement("div");
+  bullet.classList.add("dot");
+
+  // Ajouter la classe "dot_selected" pour le premier "bullet"
+  if (index === 0) {
+    bullet.classList.add("dot_selected");
+  }
+  // Ajouter le "bullet" au conteneur des "bullets"
+  bulletContainer.appendChild(bullet);
+  // Ajoute un écouteur d'événement pour le clic sur le "bullet"
+  bullet.addEventListener("click", () => {
+    afficherSlide(index);
+  });
+});
+
