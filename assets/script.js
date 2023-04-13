@@ -58,3 +58,25 @@ slides.forEach((slide, index) => {
   });
 });
 
+function afficherSlide(slideIndex) {
+  // Mettre à jour la slide courante
+  slideCourante = slideIndex;
+
+  // Mettre à jour la classe .dot_selected sur le bullet correspondant
+  const bullets = document.querySelectorAll(".dots .dot"); // Récupérer tous les éléments .dot dans la section des bullets
+  bullets.forEach((bullet, index) => {
+    // Pour chaque bullet, vérifier si l'index correspond à la slide en cours et mettre à jour la classe .dot_selected
+    if (index === slideIndex) {
+      // Si l'index correspond à la slide en cours
+      bullet.classList.add("dot_selected"); // Ajouter la classe .dot_selected pour mettre en évidence le bullet sélectionné
+    } else {
+      bullet.classList.remove("dot_selected"); // Sinon, retirer la classe .dot_selected pour désélectionner le bullet
+    }
+  });
+
+  // Mettre à jour l'image et le texte de la slide
+  const image = document.querySelector(".banner-img"); // Sélectionne l'élément img ayant la classe "banner-img"
+  image.src = slides[slideIndex].image; // Met à jour l'attribut src de l'image avec l'URL de l'image de la slide courante
+  const tagLine = document.querySelector("#banner p"); // Sélectionne l'élément p ayant l'id "banner
+  tagLine.innerHTML = slides[slideIndex].tagLine; // Met à jour le contenu HTML de l'élément p avec le texte de la tagLine de la slide courante
+}
