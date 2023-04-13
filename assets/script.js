@@ -80,3 +80,25 @@ function afficherSlide(slideIndex) {
   const tagLine = document.querySelector("#banner p"); // Sélectionne l'élément p ayant l'id "banner
   tagLine.innerHTML = slides[slideIndex].tagLine; // Met à jour le contenu HTML de l'élément p avec le texte de la tagLine de la slide courante
 }
+// Affiche la première slide au chargement de la page
+afficherSlide(0);
+
+// Ajoute un événement clic sur la flèche droite
+flecheDroite.addEventListener("click", () => {
+  slideCourante++; // Incrémente la variable slideCourante
+  if (slideCourante >= slidesCount) {
+    // Si la slide courante est égale ou supérieure au nombre de slides
+    slideCourante = 0; // On retourne à la première slide
+  }
+  afficherSlide(slideCourante); // Affiche la slide courante
+});
+
+// Ajoute un événement clic sur la flèche gauche
+flecheGauche.addEventListener("click", () => {
+  slideCourante--; // Décrémente la variable slideCourante
+  if (slideCourante < 0) {
+    // Si la slide courante est inférieure à 0 (la première slide)
+    slideCourante = slidesCount - 1; // On retourne à la dernière slide
+  }
+  afficherSlide(slideCourante); // Affiche la slide courante
+});
